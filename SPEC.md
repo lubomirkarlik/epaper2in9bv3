@@ -14,18 +14,18 @@
 |clear()|Clear both framebuffers to white|
 |fill(color)|Fill entire display with WHITE / BLACK / RED|
 |pixel(ch, x, y)|Set a single pixel in BK or RD channel|
-|pixel\_off(ch, x, y)|Clear a single pixel (set to white)|
+|pixel_off(ch, x, y)|Clear a single pixel (set to white)|
 |hline(ch, x, y, len) / vline(...)|Horizontal / vertical line|
 |line(ch, x0,y0, x1,y1)|Line between two points|
-|draw\_rect(ch, x, y, w, h)|Rectangle outline|
-|fill\_rect(ch, x, y, w, h)|Filled rectangle|
-|clear\_rect(ch, x, y, w, h)|Clear rectangle to white|
+|draw_rect(ch, x, y, w, h)|Rectangle outline|
+|fill_rect(ch, x, y, w, h)|Filled rectangle|
+|clear_rect(ch, x, y, w, h)|Clear rectangle to white|
 |circle(ch, x0, y0, r, filled)|Circle or disk|
 |triangle(ch, x0,y0, x1,y1, x2,y2, filled)|Triangle|
 |text(ch, txt, x, y, scale=1)|Render text|
-|text\_center(ch, txt, y, scale=1)|Centered horizontally|
-|text\_fit(ch, txt, y, max\_scale=3)|Automatically choose largest scale|
-|text\_width(txt, scale)|Width of text in pixels|
+|text_center(ch, txt, y, scale=1)|Centered horizontally|
+|text_fit(ch, txt, y, max_scale=3)|Automatically choose largest scale|
+|text_width(txt, scale)|Width of text in pixels|
 
 
 
@@ -45,7 +45,7 @@
 Set during construction:
 
 ```
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\`ep = EPaper29BV3(rotation=90)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\`
+ep = EPaper29BV3(rotation=90)
 ```
 
 * Supported: `0, 90, 180, 270`
@@ -59,7 +59,7 @@ Rotation is applied in software. Internal framebuffer orientation is fixed and d
 ### Constructor
 
 ```
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\`EPaper29BV3(cs=13, dc=12, rst=5, busy=11, clk=4, mosi=3, miso=16, rotation=0)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\`
+EPaper29BV3(cs=13, dc=12, rst=5, busy=11, clk=4, mosi=3, miso=16, rotation=0)
 ```
 
 |Parameter|Type|Default|Description|
@@ -139,7 +139,7 @@ Sets a pixel (black or red depending on channel).
 * Applies rotation automatically
 * Out-of-bounds coordinates are ignored
 
-### pixel\_off(channel, x, y)
+### pixel_off(channel, x, y)
 
 Clears pixel (sets to white).
 
@@ -155,15 +155,15 @@ Draw horizontal or vertical line.
 
 Draw line using Bresenham’s algorithm.
 
-### draw\_rect
+### draw_rect
 
 Draw rectangle outline.
 
-### fill\_rect
+### fill_rect
 
 Draw filled rectangle.
 
-### clear\_rect
+### clear_rect
 
 Clear rectangle to white.
 
@@ -191,19 +191,19 @@ Returns next X position.
 
 Draw string.
 
-### text\_width(txt, scale=1) -> int
+### text_width(txt, scale=1) -> int
 
 Returns pixel width:
 
 ```
-\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\`len(txt) \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* (5 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\* scale + scale) - scale\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\`
+len(txt)* (5* scale + scale) - scale
 ```
 
-### text\_center(channel, txt, y, scale=1)
+### text_center(channel, txt, y, scale=1)
 
 Draw centered text.
 
-### text\_fit(channel, txt, y, max\_scale=3) -> int
+### text_fit(channel, txt, y, max_scale=3) -> int
 
 Finds largest scale that fits screen width.
 
@@ -214,12 +214,12 @@ Finds largest scale that fits screen width.
 
 |Method|Description|
 |-|-|
-|\_cmd(c)|Send command|
-|\_data(d)|Send data|
-|\_wait(timeout)|Wait for BUSY pin|
-|\_reset()|Hardware reset|
-|\_buf(channel)|Get framebuffer|
-|\_get\_char(ch)|Font lookup|
+|_cmd(c)|Send command|
+|_data(d)|Send data|
+|_wait(timeout)|Wait for BUSY pin|
+|_reset()|Hardware reset|
+|_buf(channel)|Get framebuffer|
+|_get_char(ch)|Font lookup|
 
 
 
