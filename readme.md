@@ -41,53 +41,53 @@ Optimised for ESP32-S3 Zero, but works on any MicroPython board with SPI.
 Copy `epaper2in9bv3.py` to your device:
 
 ```
-\`/lib/epaper2in9bv3.py\`
+/lib/epaper2in9bv3.py
 ```
 
 ## Basic Usage
 
 ```
-\`from epaper2in9bv3 import EPaper29BV3\`  
+from epaper2in9bv3 import EPaper29BV3  
   
   
-\`ep = EPaper29BV3()\`  
+ep = EPaper29BV3()  
   
   
-\`ep.init()\`  
+ep.init()  
   
-\`ep.clear()\`  
-  
-  
-\`ep.text(ep.BK, "Hello World!", 10, 20, scale=2)\`  
-  
-\`ep.fill\\\_rect(ep.RD, 10, 50, 100, 30)\`  
+ep.clear()  
   
   
-\`ep.show()\`  
+ep.text(ep.BK, "Hello World!", 10, 20, scale=2)  
   
-\`ep.sleep()\`
+ep.fill_rect(ep.RD, 10, 50, 100, 30)  
+  
+  
+ep.show()  
+  
+ep.sleep()
 ```
 
 ## Example: Drawing
 
 ```
-\`ep.clear()\`  
+ep.clear()  
   
   
-\`ep.circle(ep.BK, 64, 80, 30)\`  
+ep.circle(ep.BK, 64, 80, 30)  
   
-\`ep.fill\\\_rect(ep.RD, 20, 140, 80, 40)\`  
+ep.fill_rect(ep.RD, 20, 140, 80, 40)  
   
-\`ep.text\\\_center(ep.BK, "Demo", 10, scale=2)\`  
+ep.text_center(ep.BK, "Demo", 10, scale=2)  
   
   
-\`ep.show()\`
+ep.show()
 ```
 
 ## Rotation
 
 ```
-\`ep = EPaper29BV3(rotation=90)\`
+ep = EPaper29BV3(rotation=90)
 ```
 
 - Supported: `0, 90, 180, 270`
@@ -99,21 +99,21 @@ Copy `epaper2in9bv3.py` to your device:
 ## Custom Pins
 
 ```
-\`ep = EPaper29BV3(\`  
+ep = EPaper29BV3(  
   
-\`    cs=5,\`  
+    cs=5,  
   
-\`    dc=17,\`  
+    dc=17,  
   
-\`    rst=16,\`  
+    rst=16,  
   
-\`    busy=4,\`  
+    busy=4,  
   
-\`    clk=18,\`  
+    clk=18,  
   
-\`    mosi=23\`  
+    mosi=23  
   
-\`)\`
+)
 ```
 
 ## Memory Usage
@@ -157,7 +157,7 @@ Should work on:
 Full API specification available in:
 
 ```
-\`SPEC.md\`
+SPEC.md
 ```
 
 ## License
