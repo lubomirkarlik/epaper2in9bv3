@@ -4,7 +4,6 @@
 **Target platform:** MicroPython (tested on ESP32-S3 Zero)  
 **Display:** 2.9 inch, 128×296 pixels, black/white/red, SPI interface
 
-
 ## API Overview
 
 | Method | Description |
@@ -43,13 +42,12 @@
 
 - `EPaper29BV3.RD = 1` (red channel)
 
-
 ## Rotation
 
 Set during construction:
 
 ```
-`ep = EPaper29BV3(rotation=90)`
+\`ep = EPaper29BV3(rotation=90)\`
 ```
 
 - Supported: `0, 90, 180, 270`
@@ -59,13 +57,12 @@ Set during construction:
 **Note:**  
 Rotation is applied in software. Internal framebuffer orientation is fixed and does not match logical coordinates directly.
 
-
 ## 1. Class: EPaper29BV3
 
 ### Constructor
 
 ```
-`EPaper29BV3(cs=13, dc=12, rst=5, busy=11, clk=4, mosi=3, miso=16, rotation=0)`
+\`EPaper29BV3(cs=13, dc=12, rst=5, busy=11, clk=4, mosi=3, miso=16, rotation=0)\`
 ```
 
 | Parameter | Type | Default | Description |
@@ -79,12 +76,12 @@ Rotation is applied in software. Internal framebuffer orientation is fixed and d
 | miso | int | 16 | SPI MISO (unused) |
 | rotation | int | 0 | Display rotation |
 
+
 ### Properties
 
 - `width` – logical width after rotation (read-only)
 
 - `height` – logical height after rotation (read-only)
-
 
 ## 2. Initialisation & Power Management
 
@@ -92,7 +89,6 @@ Rotation is applied in software. Internal framebuffer orientation is fixed and d
 
 Initialises the display controller.  
 Must be called once after power-on.
-
 
 ### show() -\> None
 
@@ -105,7 +101,6 @@ Transfers both framebuffers and triggers a full refresh.
 **Note:**  
 If the display does not respond, the internal wait may timeout, but no exception is raised.
 
-
 ### sleep() -\> None
 
 Puts display into deep sleep.
@@ -114,12 +109,10 @@ Puts display into deep sleep.
 
 - Device will not respond until reset or power cycle
 
-
 ### clear() -\> None
 
 Clears both framebuffers (sets all pixels to white).  
 Does not update display — call `show()` afterwards.
-
 
 ### fill(color: int) -\> None
 
@@ -144,7 +137,6 @@ Fills display with a single colour.
 
   - `1 = pixel OFF (white)`
 
-
 ## 4. Pixel Operations
 
 ### pixel(channel, x, y)
@@ -155,11 +147,9 @@ Sets a pixel (black or red depending on channel).
 
 - Out-of-bounds coordinates are ignored
 
-
 ### pixel\_off(channel, x, y)
 
 Clears pixel (sets to white).
-
 
 ## 5. Drawing Primitives
 
@@ -169,36 +159,29 @@ All coordinates are logical (after rotation).
 
 Draw horizontal or vertical line.
 
-
 ### line
 
 Draw line using Bresenham’s algorithm.
-
 
 ### draw\_rect
 
 Draw rectangle outline.
 
-
 ### fill\_rect
 
 Draw filled rectangle.
-
 
 ### clear\_rect
 
 Clear rectangle to white.
 
-
 ### circle
 
 Draw circle or filled disk.
 
-
 ### triangle
 
 Draw triangle (outline or filled).
-
 
 ## 6. Text Rendering
 
@@ -208,32 +191,27 @@ Draw triangle (outline or filled).
 
 - Unsupported characters rendered as space
 
-
 ### char(channel, x, y, ch, scale=1) -\> int
 
 Draw a single character.
 
 Returns next X position.
 
-
 ### text(channel, txt, x, y, scale=1)
 
 Draw string.
-
 
 ### text\_width(txt, scale=1) -\> int
 
 Returns pixel width:
 
 ```
-`len(txt) \* (5 \* scale + scale) - scale`
+\`len(txt) \\\* (5 \\\* scale + scale) - scale\`
 ```
-
 
 ### text\_center(channel, txt, y, scale=1)
 
 Draw centered text.
-
 
 ### text\_fit(channel, txt, y, max\_scale=3) -\> int
 
@@ -242,7 +220,6 @@ Finds largest scale that fits screen width.
 - Uses margin of 8 pixels
 
 - Returns used scale
-
 
 ## 7. Internal Methods (private)
 
@@ -285,7 +262,6 @@ Finds largest scale that fits screen width.
 
   - `time`
 
-
 ## 10. Notes
 
 - Display refresh is slow (normal for ePaper)
@@ -294,37 +270,26 @@ Finds largest scale that fits screen width.
 
 - No partial refresh support
 
-
 ## 11. Example
 
 ```
-`from epaper2in9bv3 import EPaper29BV3`
-
-`import time`
-
-
-`ep = EPaper29BV3(rotation=0)`
-
-`ep.init()`
-
-`ep.clear()`
-
-
-`ep.circle(ep.BK, 64, 100, 40)`
-
-`ep.fill\_rect(ep.RD, 20, 160, 88, 40)`
-
-
-`ep.text\_fit(ep.BK, "Hello ePaper", 240)`
-
-`ep.show()`
-
-
-`time.sleep(5)`
-
-`ep.sleep()`
+from epaper2in9bv3 import EPaper29BV3  
+import time  
+  
+  
+ep = EPaper29BV3(rotation=0)  
+ep.init()  
+ep.clear()  
+  
+ep.circle(ep.BK, 64, 100, 40)  
+ep.fill\_rect(ep.RD, 20, 160, 88, 40)  
+  
+ep.text\_fit(ep.BK, "Hello ePaper", 240)  
+ep.show()  
+  
+time.sleep(5)  
+ep.sleep()
 ```
-
 
 ## 12. Revision History
 
