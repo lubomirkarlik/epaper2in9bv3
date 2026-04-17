@@ -267,9 +267,9 @@ ep.init()
 ep.clear()          
           
 ep.circle(ep.BK, 64, 100, 40)          
-ep.fill\_rect(ep.RD, 20, 160, 88, 40)          
+ep.fill_rect(ep.RD, 20, 160, 88, 40)          
           
-ep.text\_fit(ep.BK, "Hello ePaper", 240)          
+ep.text_fit(ep.BK, "Hello ePaper", 240)          
 ep.show()          
           
 time.sleep(5)          
