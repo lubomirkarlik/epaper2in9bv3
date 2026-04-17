@@ -37,7 +37,7 @@
 
 ***Pass `rotation=` when creating the object:**
 
-***python**
+python
 
 ```
 ***ep = EPaper29BV3(rotation=90)   \# landscape, 128x296 becomes 296x128 logical**
@@ -57,7 +57,7 @@
 
 ***MIT – use freely in personal and commercial projects.**
 
-***text**
+text
 
 
 ***---**
@@ -270,7 +270,7 @@ Returns the scale that was actually used.**
 
 ## ***9. Example: Complete Program**
 
-***python**
+python
 
 ```
 ***from epaper2in9bv3 import EPaper29BV3**
@@ -309,16 +309,5 @@ Returns the scale that was actually used.**
 
 | ***Version** | ***Date** | ***Changes** |
 | - | - | - |
-| ***1.0** | ***2025‑03‑xx** | ***Initial release** |
-
-***text**
-
-
-***---**
-
-
-***You can now copy the \*\*README.md\*\* block into your GitHub repository and save the \*\*Software Specification\*\* as \`SPEC.md\` or include it in your project documentation. Both are ready to use.**
-```
-
-![]()  
+| ***1.0** | ***2026‑04‑12** | ***Initial release** |
 
