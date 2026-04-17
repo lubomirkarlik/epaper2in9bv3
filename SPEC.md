@@ -1,28 +1,43 @@
-# API Documentation
+# EPaper29BV3 API Documentation
 
-## Endpoints
+## Overview
+The EPaper29BV3 is an advanced electronic paper display that provides low power consumption and high visibility.
 
-### GET /api/example
+## API Endpoints
 
-- **Description**: Retrieve example data.
-- **Responses**:
-  - `200 OK`: Returns a list of examples.
-  - `404 Not Found`: If no examples are found.
+### Get Display Status
 
-### POST /api/example
+**Endpoint:** `GET /api/display/status`
 
-- **Description**: Create a new example.
-- **Request Body**:
-  - `name`: String, required.
-  - `value`: Number, required.
-- **Responses**:
-  - `201 Created`: Returns the created example.
-  - `400 Bad Request`: If required fields are missing.
+**Description:** Retrieves the current status of the display.
 
-## Error Codes
+**Response:**
+```json
+{
+  "status": "active",
+  "brightness": 75
+}
+```
 
-- `400`: Bad Request
-- `401`: Unauthorized
-- `403`: Forbidden
-- `404`: Not Found
-- `500`: Internal Server Error
+### Update Display Content
+
+**Endpoint:** `POST /api/display/content`
+
+**Description:** Updates the content displayed on the screen.
+
+**Request Body:**
+```json
+{
+  "content": "Hello World!"
+}
+```
+
+**Response:**
+```json
+{
+  "message": "Content updated successfully"
+}
+```
+
+## Conclusion
+This API allows for easy interaction with the EPaper29BV3 display, ensuring that content can be updated and monitored effectively.
