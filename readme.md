@@ -3,6 +3,7 @@
 A fast, feature‑rich MicroPython driver for the **Waveshare 2.9inch e‑Paper B V3** display (128×296 pixels, black/white/red).  
 Optimised for ESP32‑S3 Zero, but works on any MicroPython board with SPI.
 
+![Display Example](img/ePap29.png)
 
 ## Features
 
