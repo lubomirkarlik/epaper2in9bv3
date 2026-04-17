@@ -37,7 +37,7 @@
 
 ***Pass `rotation=` when creating the object:**
 
-python
+**python**
 
 ```
 ***ep = EPaper29BV3(rotation=90)   \# landscape, 128x296 becomes 296x128 logical**
@@ -57,45 +57,21 @@ python
 
 ***MIT – use freely in personal and commercial projects.**
 
-text
+
+# Software Specification – Waveshare 2.9" e-Paper B V3 Driver
+
+**Driver version:** 1.0  
+**Target platform:** MicroPython (tested on ESP32‑S3 Zero)  
+**Display:** 2.9 inch, 128×296 pixels, black/white/red, SPI interface
 
 
-***---**
+## 1. Class: `EPaper29BV3`
 
+### 1.1 Constructor
 
-***\#\# 📄 Software Specification (Driver API Reference)**
-
-
-***Create a separate file, e.g. \`SPEC.md\`, or include it in your documentation folder.**
-
-
-***\`\`\`markdown**
-
-***\# Software Specification – Waveshare 2.9" e-Paper B V3 Driver**
-
-
-***\*\*Driver version:\*\* 1.0  **
-
-***\*\*Target platform:\*\* MicroPython (tested on ESP32‑S3 Zero)  **
-
-***\*\*Display:\*\* 2.9 inch, 128×296 pixels, black/white/red, SPI interface**
-
-
-***---**
-
-
-***\#\# 1. Class: \`EPaper29BV3\`**
-
-
-***\#\#\# 1.1 Constructor**
-
-
-***\`\`\`python**
-
-***EPaper29BV3(cs=13, dc=12, rst=5, busy=11, clk=4, mosi=3, miso=16, rotation=0)**
 ```
-
-***Parameters:**
+EPaper29BV3(cs=13, dc=12, rst=5, busy=11, clk=4, mosi=3, miso=16, rotation=0)
+```
 
 | ***Parameter** | ***Type** | ***Default** | ***Description** |
 | - | - | - | - |
@@ -270,7 +246,7 @@ Returns the scale that was actually used.**
 
 ## ***9. Example: Complete Program**
 
-python
+**python**
 
 ```
 ***from epaper2in9bv3 import EPaper29BV3**
@@ -310,4 +286,6 @@ python
 | ***Version** | ***Date** | ***Changes** |
 | - | - | - |
 | ***1.0** | ***2026‑04‑12** | ***Initial release** |
+
+
 
