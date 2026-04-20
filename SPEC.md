@@ -196,7 +196,7 @@ Draw string.
 Returns pixel width:
 
 ```
-len(txt)\\\\\\\* (5\\\\\\\* scale + scale) - scale
+len(txt)\\\\\\\\\\\\\\\* (5\\\\\\\\\\\\\\\* scale + scale) - scale
 ```
 
 ### text\_center(channel, txt, y, scale=1)
@@ -289,7 +289,7 @@ Features tested:
 * Text rendering (multiple scales, centering)
 * Red channel rendering
 * Pixel-level operations
-* clear\_rect functionality
+* clear_rect functionality
 
 Output:
 
@@ -299,9 +299,10 @@ Output:
 Usage:
 
 ```
-import test\\\_disp  
-  
-## 13\. Example
+import test_disp  
+```
+
+## 13\\. Example
 ```
 
 from epaper2in9bv3 import EPaper29BV3  
