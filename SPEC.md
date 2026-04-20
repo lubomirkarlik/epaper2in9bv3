@@ -2,7 +2,7 @@
 
 **Driver version:** 1.0  
 **Target platform:** MicroPython (tested on ESP32-S3 Zero)  
-**Display:** 2.9 inch, 128×296 pixels, black/white/red, SPI interface
+**Display:** 2.9 inch, 128×296 pixels, black/white/red, I^2C interface
 
 ## API Overview
 
