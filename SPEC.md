@@ -282,7 +282,9 @@ Returns:
 ## 12\. Test Program (test\_disp.py)
 
 A comprehensive visual test suite demonstrating all driver features.
+
 ![2.9"eInk display_test_image](img/test_disp.png)
+
 Features tested:
 
 * Drawing primitives (rectangles, circles, triangles, lines)
