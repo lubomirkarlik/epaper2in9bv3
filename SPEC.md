@@ -6,41 +6,39 @@
 
 ## API Overview
 
-| Method | Description |
-| - | - |
-| init() | Initialise the display (call once) |
-| show() | Transfer both framebuffers and refresh |
-| sleep() | Deep sleep mode |
-| clear() | Clear both framebuffers to white |
-| fill(color) | Fill entire display with WHITE / BLACK / RED |
-| pixel(ch, x, y) | Set a single pixel in BK or RD channel |
-| pixel\_off(ch, x, y) | Clear a single pixel (set to white) |
-| hline(ch, x, y, len) / vline(...) | Horizontal / vertical line |
-| line(ch, x0,y0, x1,y1) | Line between two points |
-| draw\_rect(ch, x, y, w, h) | Rectangle outline |
-| fill\_rect(ch, x, y, w, h) | Filled rectangle |
-| clear\_rect(ch, x, y, w, h) | Clear rectangle to white |
-| circle(ch, x0, y0, r, filled) | Circle or disk |
-| triangle(ch, x0,y0, x1,y1, x2,y2, filled) | Triangle |
-| text(ch, txt, x, y, scale=1) | Render text |
-| text\_center(ch, txt, y, scale=1) | Centered horizontally |
-| text\_fit(ch, txt, y, max\_scale=3) | Automatically choose largest scale |
-| text\_width(txt, scale) | Width of text in pixels |
+|Method|Description|
+|-|-|
+|init()|Initialise the display (call once)|
+|show()|Transfer both framebuffers and refresh|
+|sleep()|Deep sleep mode|
+|clear()|Clear both framebuffers to white|
+|fill(color)|Fill entire display with WHITE / BLACK / RED|
+|pixel(ch, x, y)|Set a single pixel in BK or RD channel|
+|pixel\_off(ch, x, y)|Clear a single pixel (set to white)|
+|hline(ch, x, y, len) / vline(...)|Horizontal / vertical line|
+|line(ch, x0,y0, x1,y1)|Line between two points|
+|draw\_rect(ch, x, y, w, h)|Rectangle outline|
+|fill\_rect(ch, x, y, w, h)|Filled rectangle|
+|clear\_rect(ch, x, y, w, h)|Clear rectangle to white|
+|circle(ch, x0, y0, r, filled)|Circle or disk|
+|triangle(ch, x0,y0, x1,y1, x2,y2, filled)|Triangle|
+|text(ch, txt, x, y, scale=1)|Render text|
+|text\_center(ch, txt, y, scale=1)|Centered horizontally|
+|text\_fit(ch, txt, y, max\_scale=3)|Automatically choose largest scale|
+|text\_width(txt, scale)|Width of text in pixels|
+
 
 
 ## Colour Constants
 
-- `EPaper29BV3.WHITE = 0`
-
-- `EPaper29BV3.BLACK = 1`
-
-- `EPaper29BV3.RED = 2`
+* `EPaper29BV3.WHITE = 0`
+* `EPaper29BV3.BLACK = 1`
+* `EPaper29BV3.RED = 2`
 
 **Channel selection:**
 
-- `EPaper29BV3.BK = 0` (black channel)
-
-- `EPaper29BV3.RD = 1` (red channel)
+* `EPaper29BV3.BK = 0` (black channel)
+* `EPaper29BV3.RD = 1` (red channel)
 
 ## Rotation
 
@@ -50,14 +48,13 @@ Set during construction:
 ep = EPaper29BV3(rotation=90)
 ```
 
-- Supported: `0, 90, 180, 270`
-
-- Logical `width` and `height` are automatically swapped for 90° and 270°
+* Supported: `0, 90, 180, 270`
+* Logical `width` and `height` are automatically swapped for 90° and 270°
 
 **Note:**  
 Rotation is applied in software. Internal framebuffer orientation is fixed and does not match logical coordinates directly.
 
-## 1. Class: EPaper29BV3
+## 1\. Class: EPaper29BV3
 
 ### Constructor
 
@@ -65,93 +62,88 @@ Rotation is applied in software. Internal framebuffer orientation is fixed and d
 EPaper29BV3(cs=13, dc=12, rst=5, busy=11, clk=4, mosi=3, miso=16, rotation=0)
 ```
 
-| Parameter | Type | Default | Description |
-| - | - | - | - |
-| cs | int | 13 | Chip Select pin |
-| dc | int | 12 | Data/Command pin |
-| rst | int | 5 | Reset pin |
-| busy | int | 11 | Busy pin |
-| clk | int | 4 | SPI clock |
-| mosi | int | 3 | SPI MOSI |
-| miso | int | 16 | SPI MISO (unused) |
-| rotation | int | 0 | Display rotation |
+|Parameter|Type|Default|Description|
+|-|-|-|-|
+|cs|int|13|Chip Select pin|
+|dc|int|12|Data/Command pin|
+|rst|int|5|Reset pin|
+|busy|int|11|Busy pin|
+|clk|int|4|SPI clock|
+|mosi|int|3|SPI MOSI|
+|miso|int|16|SPI MISO (unused)|
+|rotation|int|0|Display rotation|
+
 
 
 ### Properties
 
-- `width` – logical width after rotation (read-only)
+* `width` – logical width after rotation (read-only)
+* `height` – logical height after rotation (read-only)
 
-- `height` – logical height after rotation (read-only)
+## 2\. Initialisation \& Power Management
 
-## 2. Initialisation & Power Management
-
-### init() -\> None
+### init() -> None
 
 Initialises the display controller.  
 Must be called once after power-on.
 
-### show() -\> None
+### show() -> None
 
 Transfers both framebuffers and triggers a full refresh.
 
-- Blocking operation (≈2–3 seconds)
-
-- Waits until BUSY pin goes low
+* Blocking operation (≈2–3 seconds)
+* Waits until BUSY pin goes low
 
 **Note:**  
 If the display does not respond, the internal wait may timeout, but no exception is raised.
 
-### sleep() -\> None
+### sleep() -> None
 
 Puts display into deep sleep.
 
-- Required before cutting power
+* Required before cutting power
+* Device will not respond until reset or power cycle
 
-- Device will not respond until reset or power cycle
-
-### clear() -\> None
+### clear() -> None
 
 Clears both framebuffers (sets all pixels to white).  
 Does not update display — call `show()` afterwards.
 
-### fill(color: int) -\> None
+### fill(color: int) -> None
 
 Fills display with a single colour.
 
-| Color | Effect |
-| - | - |
-| WHITE | Clears both channels |
-| BLACK | Sets black channel only |
-| RED | Sets red channel only |
+|Color|Effect|
+|-|-|
+|WHITE|Clears both channels|
+|BLACK|Sets black channel only|
+|RED|Sets red channel only|
 
 
-## 3. Framebuffer & Pixel Model
 
-- Each channel has its own framebuffer
+## 3\. Framebuffer \& Pixel Model
 
-- Size per channel: `128 × 296 / 8 = 4736 bytes`
+* Each channel has its own framebuffer
+* Size per channel: `128 × 296 / 8 = 4736 bytes`
+* Bit format:
 
-- Bit format:
+  * `0 = pixel ON (black/red)`
+  * `1 = pixel OFF (white)`
 
-  - `0 = pixel ON (black/red)`
-
-  - `1 = pixel OFF (white)`
-
-## 4. Pixel Operations
+## 4\. Pixel Operations
 
 ### pixel(channel, x, y)
 
 Sets a pixel (black or red depending on channel).
 
-- Applies rotation automatically
-
-- Out-of-bounds coordinates are ignored
+* Applies rotation automatically
+* Out-of-bounds coordinates are ignored
 
 ### pixel\_off(channel, x, y)
 
 Clears pixel (sets to white).
 
-## 5. Drawing Primitives
+## 5\. Drawing Primitives
 
 All coordinates are logical (after rotation).
 
@@ -183,15 +175,13 @@ Draw circle or filled disk.
 
 Draw triangle (outline or filled).
 
-## 6. Text Rendering
+## 6\. Text Rendering
 
-- Built-in 5×7 pixel font
+* Built-in 5×7 pixel font
+* ASCII range: 32–122
+* Unsupported characters rendered as space
 
-- ASCII range: 32–122
-
-- Unsupported characters rendered as space
-
-### char(channel, x, y, ch, scale=1) -\> int
+### char(channel, x, y, ch, scale=1) -> int
 
 Draw a single character.
 
@@ -201,133 +191,117 @@ Returns next X position.
 
 Draw string.
 
-### text\_width(txt, scale=1) -\> int
+### text\_width(txt, scale=1) -> int
 
 Returns pixel width:
 
 ```
-len(txt)\\\* (5\\\* scale + scale) - scale
+len(txt)\\\\\\\* (5\\\\\\\* scale + scale) - scale
 ```
 
 ### text\_center(channel, txt, y, scale=1)
 
 Draw centered text.
 
-### text\_fit(channel, txt, y, max\_scale=3) -\> int
+### text\_fit(channel, txt, y, max\_scale=3) -> int
 
 Finds largest scale that fits screen width.
 
-- Uses margin of 8 pixels
+* Uses margin of 8 pixels
+* Returns used scale
 
-- Returns used scale
+## 7\. Internal Methods (private)
 
-## 7. Internal Methods (private)
-
-| Method | Description |
-| - | - |
-| \_cmd(c) | Send command |
-| \_data(d) | Send data |
-| \_wait(timeout) | Wait for BUSY pin |
-| \_reset() | Hardware reset |
-| \_buf(channel) | Get framebuffer |
-| \_get\_char(ch) | Font lookup |
-
-
-## 8. Constants
-
-| Name | Value | Meaning |
-| - | - | - |
-| WHITE | 0 | White |
-| BLACK | 1 | Black |
-| RED | 2 | Red |
-| BK | 0 | Black channel |
-| RD | 1 | Red channel |
-| W | 128 | Physical width |
-| H | 296 | Physical height |
+|Method|Description|
+|-|-|
+|\_cmd(c)|Send command|
+|\_data(d)|Send data|
+|\_wait(timeout)|Wait for BUSY pin|
+|\_reset()|Hardware reset|
+|\_buf(channel)|Get framebuffer|
+|\_get\_char(ch)|Font lookup|
 
 
-## 9. Timing & Dependencies
 
-- SPI speed: 2 MHz
+## 8\. Constants
 
-- Refresh time: ~2–3 seconds
+|Name|Value|Meaning|
+|-|-|-|
+|WHITE|0|White|
+|BLACK|1|Black|
+|RED|2|Red|
+|BK|0|Black channel|
+|RD|1|Red channel|
+|W|128|Physical width|
+|H|296|Physical height|
 
-- BUSY pin: `1 = busy`, `0 = idle`
 
-- Uses:
 
-  - `machine.Pin`
+## 9\. Timing \& Dependencies
 
-  - `machine.SoftSPI`
+* SPI speed: 2 MHz
+* Refresh time: \~2–3 seconds
+* BUSY pin: `1 = busy`, `0 = idle`
+* Uses:
 
-  - `time`
+  * `machine.Pin`
+  * `machine.SoftSPI`
+  * `time`
 
-## 10. Notes
+## 10\. Notes
 
-- Display refresh is slow (normal for ePaper)
+* Display refresh is slow (normal for ePaper)
+* Always call `sleep()` before power-off
+* No partial refresh support
 
-- Always call `sleep()` before power-off
-
-- No partial refresh support
-
-## 11. Screenshot Utility (screenshot.py)
+## 11\. Screenshot Utility (screenshot.py)
 
 Provides a helper function to export the current framebuffer as a BMP image.
 
-### capture(ep, filename="screenshot.bmp") -\> bool
+### capture(ep, filename="screenshot.bmp") -> bool
 
 Creates a monochrome BMP file from the display framebuffer.
 
 Args:
 
-- ep: instance of EPaper29BV3
-
-- filename: output file name
+* ep: instance of EPaper29BV3
+* filename: output file name
 
 Notes:
 
-- Uses black channel framebuffer only
-
-- Output resolution is always 128×296 (physical display resolution)
-
-- BMP format: 1-bit monochrome
-
-- Image is vertically flipped to match BMP format
+* Uses black channel framebuffer only
+* Output resolution is always 128×296 (physical display resolution)
+* BMP format: 1-bit monochrome
+* Image is vertically flipped to match BMP format
 
 Returns:
 
-- True on success
+* True on success
+* False on failure
 
-- False on failure
-
-## 12. Test Program (test\_disp.py)
+## 12\. Test Program (test\_disp.py)
 
 A comprehensive visual test suite demonstrating all driver features.
 
 Features tested:
 
-- Drawing primitives (rectangles, circles, triangles, lines)
-
-- Text rendering (multiple scales, centering)
-
-- Red channel rendering
-
-- Pixel-level operations
-
-- clear\_rect functionality
+* Drawing primitives (rectangles, circles, triangles, lines)
+* Text rendering (multiple scales, centering)
+* Red channel rendering
+* Pixel-level operations
+* clear\_rect functionality
 
 Output:
 
-- Displays full test screen
-
-- Saves screenshot as "test\_disp.bmp"
+* Displays full test screen
+* Saves screenshot as "test\_disp.bmp"
 
 Usage:
 
 ```
-import test\_disp  
+import test\\\_disp  
   
-\#\# 13\\. Example
+## 13\. Example
 ```
 
 from epaper2in9bv3 import EPaper29BV3  
@@ -338,9 +312,9 @@ ep.init()
 ep.clear()
 
 ep.circle(ep.BK, 64, 100, 40)  
-ep.fill\_rect(ep.RD, 20, 160, 88, 40)
+ep.fill_rect(ep.RD, 20, 160, 88, 40)
 
-ep.text\_fit(ep.BK, "Hello ePaper", 240)  
+ep.text_fit(ep.BK, "Hello ePaper", 240)  
 ep.show()
 
 time.sleep(5)  
@@ -348,7 +322,7 @@ ep.sleep()
 
 ```
   
-\#\# 14\\. Revision History  
+## 14\. Revision History  
   
 |Version|Date|Changes|  
 |-|-|-|  
