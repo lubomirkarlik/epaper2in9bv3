@@ -1,6 +1,6 @@
 # **Software Specification – Waveshare 2.9" e-Paper B V3 Driver**
 
-**Driver version:** 1.0  
+**Driver version:** 1.2  
 **Target platform:** MicroPython (tested on ESP32-S3 Zero)  
 **Display:** 2.9 inch, 128×296 pixels, black/white/red, SPI interface
 
