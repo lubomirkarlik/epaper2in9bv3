@@ -196,14 +196,14 @@ Draw string.
 Returns pixel width:
 
 ```
-len(txt)\\\\\\\\\\\\\\\* (5\\\\\\\\\\\\\\\* scale + scale) - scale
+len(txt) * (5 * scale + scale) - scale
 ```
 
 ### text\_center(channel, txt, y, scale=1)
 
 Draw centered text.
 
-### text\_fit(channel, txt, y, max\_scale=3) -> int
+### text_fit(channel, txt, y, max_scale=3) -> int
 
 Finds largest scale that fits screen width.
 
@@ -214,12 +214,12 @@ Finds largest scale that fits screen width.
 
 |Method|Description|
 |-|-|
-|\_cmd(c)|Send command|
-|\_data(d)|Send data|
-|\_wait(timeout)|Wait for BUSY pin|
-|\_reset()|Hardware reset|
-|\_buf(channel)|Get framebuffer|
-|\_get\_char(ch)|Font lookup|
+|_cmd(c)|Send command|
+|_data(d)|Send data|
+|_wait(timeout)|Wait for BUSY pin|
+|_reset()|Hardware reset|
+|_buf(channel)|Get framebuffer|
+|_get\_char(ch)|Font lookup|
 
 
 
@@ -294,7 +294,7 @@ Features tested:
 Output:
 
 * Displays full test screen
-* Saves screenshot as "test\_disp.bmp"
+* Saves screenshot as "test_disp.bmp"
 
 Usage:
 
