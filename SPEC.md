@@ -302,7 +302,7 @@ Usage:
 import test_disp  
 ```
 
-## 13\\. Example
+## 13\. Example
 ```
 
 from epaper2in9bv3 import EPaper29BV3  
